@@ -436,9 +436,12 @@
 
 /* Board.css */
 
-/* General Board Styling */
+/* Container */
 .board-container {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 /* Board Title */
@@ -468,20 +471,14 @@
   background-color: #e14d4d;
 }
 
-/* Board Container */
-.board-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
 /* Section Grid */
 .section-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   width: 100%;
   max-width: 1200px;
+  margin-top: 20px;
 }
 
 /* Section */
@@ -566,6 +563,8 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
 }
 
 .add-task-button:hover {
@@ -599,6 +598,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 /* Modal Content */
@@ -607,7 +607,7 @@
   border-radius: 8px;
   padding: 20px;
   max-width: 500px;
-  width: 100%;
+  width: 90%;
   position: relative;
 }
 
@@ -643,6 +643,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 /* Cancel Button */
@@ -673,29 +674,142 @@
   transition: background-color 0.3s;
 }
 
-.submit-button:hover {
-  background-color: #0056b3;
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .board-title {
+    font-size: 1.5rem;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signout-button {
+    font-size: 0.875rem;
+    padding: 8px 16px;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .task-card {
+    padding: 8px;
+  }
+
+  .task-title {
+    font-size: 0.875rem;
+  }
+
+  .history-title {
+    font-size: 0.875rem;
+  }
+
+  .add-task-button {
+    font-size: 0.875rem;
+    padding: 8px;
+  }
 }
 
-.task-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Medium devices (tablets, 600px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .board-title {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .task-card {
+    padding: 10px;
+  }
+
+  .task-title {
+    font-size: 1rem;
+  }
+
+  .history-title {
+    font-size: 1rem;
+  }
+
+  .add-task-button {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
 }
 
-.section-selector {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  font-size: 14px;
+/* Large devices (desktops, 900px and up) */
+@media (min-width: 901px) {
+  .section-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .board-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .task-card {
+    padding: 15px;
+  }
+
+  .task-title {
+    font-size: 1.25rem;
+  }
+
+  .history-title {
+    font-size: 1.25rem;
+  }
+
+  .add-task-button {
+    font-size: 1rem;
+    padding: 15px 20px;
+  }
+}
+
+/* Default styles for sign out button */
+.signout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff5b5b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  margin-left: 8px; /* Space between dropdown and other buttons */
+  font-size: 1rem;
+  transition: background-color 0.3s;
 }
 
-.section-selector:focus {
-  outline: none;
-  border-color: #007bff;
-  background-color: #e9f5ff;
+.signout-button:hover {
+  background-color: #e14d4d;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .board-title {
+    font-size: 1.5rem;
+    margin-bottom: 50px; /* Add space to avoid overlap */
+  }
+
+  .signout-button {
+    position: static; /* Remove absolute positioning */
+    display: block;
+    margin: 0 auto 10px; /* Center the button and add margin */
+    width: auto;
+    text-align: center;
+  }
 }
